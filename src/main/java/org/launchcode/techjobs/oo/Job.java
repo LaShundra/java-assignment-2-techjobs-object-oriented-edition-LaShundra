@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import java.lang.reflect.Field;
 import java.util.Objects;
 
 public class Job {
@@ -105,5 +106,30 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
 
         this.coreCompetency = coreCompetency;
+    }
+
+    @Override
+    public String toString() {
+        String nameField = getName().equals("") ? "Data not available" : getName();
+        String employerField = getEmployer().getValue().equals("") ? "Data not available" : getEmployer().toString();
+        String locationField = getLocation().getValue().equals("")? "Data not available" : getLocation().toString();
+        String positionTypeField = getPositionType().getValue().equals("") ? "Data not available" : getPositionType().toString();
+        String coreCompetencyField = getCoreCompetency().getValue().equals("") ? "Data not available" : getCoreCompetency().toString();
+
+//        String[] labels = {"ID: ", "Name: ", "Employer: ", "Location: ", "Position Type: ", "Core Competency: "};
+//
+//        Field[] fields = Job.class.getDeclaredFields();
+//        String unavailable = "Data not available";
+//        String message = "\n";
+//        int index = 0;
+
+
+        return "\n"  +
+                "ID:" + " " + getId() + '\n' +
+                "Name:" + " " + nameField + '\n' +
+                "Employer:" + " " + employerField + '\n' +
+                "Location:" + " " + locationField + '\n' +
+                "Position Type:" + " " + positionTypeField + '\n' +
+                "Core Competency:" + " " + coreCompetencyField +"\n";
     }
 }
